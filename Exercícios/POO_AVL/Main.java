@@ -1,4 +1,4 @@
-import library.*;
+import include.*;
 
 public class Main{
     public static void main(String[] args) {
