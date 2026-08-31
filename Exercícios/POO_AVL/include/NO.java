@@ -79,14 +79,8 @@ public class NO{
 
     }
 
-    public NO inserir(NO no, int valor) {
-
-        if(no == null) return new NO(valor);
-        else if(valor < no.valor) no.esq = inserir(no.esq, valor);
-        else if(valor > no.valor)no.dir = inserir(no.dir, valor);
-        else return no;
-
-        no.altura = 1 + max(altura_f(no.esq), altura_f(no.dir));
+    //Balanceamento
+    public NO balancear(NO no) {
 
         int fatorbalanceamento = fator_balanceamento(no);
 
@@ -121,6 +115,21 @@ public class NO{
             return RR(no);
 
         }
+
+        return no;
+
+    }
+
+    public NO inserir(NO no, int valor) {
+
+        if(no == null) return new NO(valor);
+        else if(valor < no.valor) no.esq = inserir(no.esq, valor);
+        else if(valor > no.valor)no.dir = inserir(no.dir, valor);
+        else return no;
+
+        no.altura = 1 + max(altura_f(no.esq), altura_f(no.dir));
+
+        no = balancear(no);
 
         return no;
 
