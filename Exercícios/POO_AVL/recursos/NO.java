@@ -1,4 +1,4 @@
-package include;
+package recursos;
 
 public class NO{
 
@@ -23,16 +23,7 @@ public class NO{
 
     }
 
-    public int altura(NO no) {
-
-        if(no == null) return -1;
-        int altEsq = altura(no.esq);
-        int altDir = altura(no.dir);
-        return max(altEsq, altDir) + 1;
-
-    }
-
-    public int altura_f(NO no) {
+    public int get_altura(NO no) {
 
         if(no == null)
         return -1;
@@ -43,7 +34,13 @@ public class NO{
 
     public int fator_balanceamento(NO no) {
 
-        return altura_f(no.esq) - altura_f(no.dir);
+        return get_altura(no.esq) - get_altura(no.dir);
+
+    }
+
+    public int atualizar_altura(NO no) {
+
+        return 1 + max(get_altura(no.esq), get_altura(no.dir));
 
     }
 
@@ -56,8 +53,8 @@ public class NO{
         B.dir = A;
         A.esq = subarvore;
 
-        A.altura = 1 + max(altura_f(A.esq), altura_f(A.dir));
-        B.altura = 1 + max(altura_f(B.esq), altura_f(B.dir));
+        A.altura = atualizar_altura(A);
+        B.altura = atualizar_altura(B);
 
         return B;
 
@@ -72,8 +69,8 @@ public class NO{
         B.esq = A;
         A.dir = subarvore;
 
-        A.altura = 1 + max(altura_f(A.esq), altura_f(A.dir));
-        B.altura = 1 + max(altura_f(B.esq), altura_f(B.dir));
+        A.altura = atualizar_altura(A);;
+        B.altura = atualizar_altura(B);;
 
         return B;
 
@@ -127,7 +124,7 @@ public class NO{
         else if(valor > no.valor)no.dir = inserir(no.dir, valor);
         else return no;
 
-        no.altura = 1 + max(altura_f(no.esq), altura_f(no.dir));
+        no.altura = atualizar_altura(no);
 
         no = balancear(no);
 
@@ -154,7 +151,7 @@ public class NO{
 
     public void imprimir_por_nivel(NO no) {
 
-        int h = altura(no) + 1;
+        int h = no.altura + 1;
 
         for(int cont = 0; cont <= h; System.out.println(""), cont++) {
 
