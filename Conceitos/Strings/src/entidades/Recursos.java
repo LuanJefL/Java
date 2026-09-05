@@ -1,10 +1,10 @@
-package include;
+package entidades;
 
-public class Entidades{
+public class Recursos{
 
     public String nome;
 
-    public Entidades(String nome) {
+    public Recursos(String nome) {
 
         this.nome = nome;
 

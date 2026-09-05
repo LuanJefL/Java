@@ -1,9 +1,9 @@
-import include.*;
+import entidades.Recursos;
 
 public class Main{
     public static void main(String[] args) {
 
-        Entidades Julio = new Entidades("tonbeoitbneotib");
+        Recursos Julio = new Recursos("tonbeoitbneotib");
 
         Julio.imprimir();
 

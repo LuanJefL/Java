@@ -44,6 +44,49 @@ public class NO{
 
     }
 
+    public NO menor(NO no) {
+
+        if (no == null) {
+            return null;
+        }
+        else if (no.esq == null) {
+            return no;
+        }
+
+        return menor(no.esq);
+
+    }
+
+    public NO remover(NO no, int valor) {
+
+        if(no == null) return null;
+        else if(valor > no.valor) no.dir = remover(no.dir ,valor);
+        else if(valor < no.valor) no.esq = remover(no.esq, valor);
+        else {
+
+            if(no.esq == null && no.dir == null) return null;
+            else if(no.esq == null && no.dir != null) return no.dir;
+            else if(no.esq != null && no.dir == null) return no.esq;
+            else{
+
+                NO Sucessor = menor(no.dir);
+                no.valor = Sucessor.valor;
+                
+                no.dir = remover(no.dir, Sucessor.valor);
+
+            }
+
+        }
+
+        no.altura = atualizar_altura(no);
+
+        no = balancear(no);
+
+        return no;
+
+    }
+
+
     //Rotação na direita
     public NO LL(NO A) {
 

@@ -10,7 +10,6 @@ public class Main{
         System.out.printf("O primeiro número da soma:");
         n1 = input.nextInt(); 
 
-
         System.out.printf("O segundo número da soma:");
         n2 = input.nextInt();
 
