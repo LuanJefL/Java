@@ -19,6 +19,8 @@ public class Main{
 
         input.close();
 
+        //Lembrar de adicionar um nextLine() quando for usar 
+
     }
 
 }

@@ -18,6 +18,10 @@ public class Main{
 
         Arvore.imprimir_por_nivel(Arvore);
 
+        Arvore = Arvore.remover(Arvore, 12);
+
+        Arvore.imprimir_por_nivel(Arvore);
+
     }
 
 
